@@ -1,0 +1,109 @@
+Q1.
+
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    string input;
+    
+    cout << "Enter input: ";
+    cin >> input;
+    
+    bool isNumeric = true;
+    
+    
+    for (int i = 0; i < input.length(); i++) {
+        
+        if (input[i] < 48 || input[i] > 57) {
+            isNumeric = false;
+            break;
+        }
+    }
+    
+    if (isNumeric && !input.empty()) {
+        cout << "numeric constant" << endl;
+    } else {
+        cout << "not numeric" << endl;
+    }
+    
+    return 0;
+}
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q2.
+
+
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    string input;
+    
+    cout << "Enter input: ";
+    getline(cin, input);
+    
+    int operatorCount = 0;
+    
+    cout << "Operators found: ";
+    
+    
+    for (char c : input) {
+
+        if (c == '+' || c == '-' || c == '*' || c == '/' || c == '%' || c == '=') {
+            
+            operatorCount++;
+            
+            cout << "operator" << operatorCount << ": " << c << " ";
+        }
+    }
+    
+    if (operatorCount == 0) {
+        cout << "No operators found";
+    }
+    
+    cout << endl;
+    
+    return 0;
+}
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    string input;
+    
+    cout << "Enter input: ";
+    getline(cin, input);
+    
+    bool isComment = false;
+    
+   
+    if (input.length() >= 2 && input[0] == 47 && input[1] == 47) {
+        isComment = true;
+    }
+   
+    else if (input.length() >= 2 && input[0] == 47 && input[1] == 42) {
+        isComment = true;
+    }
+    
+    else if (input.length() >= 2 && input[input.length()-2] == 42 && input[input.length()-1] == 47) {
+        isComment = true;
+    }
+    
+    if (isComment) {
+        cout << "This is a single line comment" << endl;
+    } else {
+        cout << "This is not a comment line" << endl;
+    }
+    
+    return 0;
+}
