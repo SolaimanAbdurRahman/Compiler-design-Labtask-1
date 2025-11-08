@@ -1,0 +1,98 @@
+Q4.
+
+  
+#include<iostream>
+
+using namespace std;
+
+bool isAlphabet(char ch ){
+    if(( ch>='A'&& ch<='Z')||(ch>='a'&&ch<='z'))
+        return true;
+    else
+        return false;
+}
+bool isdigit(char ch ){
+    if( ch>='0'&& ch<='9')
+        return true;
+    else
+        return false;
+}
+bool isidentifier(string input){
+int len=input.length();{
+if(len==0)
+    return false;
+}
+if(!(isAlphabet(input[0])||input[0]=='_')){
+    return false;}
+for(int i=1;i<len;i++){
+    if(!(isAlphabet(input[i])||(isdigit(input[i])||input[i]=='_')))
+       return false;
+}
+
+return true;
+}
+int main(){
+    string word;
+cout<<"Enter:";
+cin>>word;
+if (isidentifier(word)){
+    cout<<"identifier is valid";}
+    else
+     cout<<"identifier is  not valid";
+    return 0;
+}
+--------------------------------------------------------------------------------------------------
+
+  Q6.
+
+  #include<iostream>
+
+using namespace std;
+
+int main(){
+    int n;
+    cout<<"Enter:";
+    cin>>n;
+    int arr[n];
+    int sum;
+    cout<<"enter"<<n<<"number";
+    for(int i=0;i<n;i++){
+
+        cin>>arr[i];
+        sum=sum+arr[i];
+    }
+
+    float avg=(float)sum/n;
+    cout<<avg;
+    return 0;
+}
+
+--------------------------------------------------------------------------------------------------------------------------
+
+  Q7.
+
+  #include<iostream>
+
+using namespace std;
+
+int main(){
+string first,last,full=" ";
+cout<<"First name"<<endl;
+cin>>first;
+cout<<"Last name"<<endl;
+cin>>last;
+for(int i=0;i<first.length();i++){
+
+    full = full + first[i];}
+    full= full +' ';
+   for(int i=0;i<last.length();i++){
+
+    full=full + last[i];
+
+}
+cout<<"Full name:"<<full;
+return 0;
+}
+
+
+  
