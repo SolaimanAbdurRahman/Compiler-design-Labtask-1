@@ -1,0 +1,65 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+using namespace std;
+
+int main() {
+    
+    ofstream outfile("source.txt");
+    outfile << "HELLO WORLD";
+    outfile.close();
+    cout << "Created file with: HELLO WORLD\n\n";
+
+    
+    ifstream infile("source.txt");
+    string code;
+    getline(infile, code);
+    infile.close();
+    cout << "Reading code: " << code << "\n\n";
+
+   
+    cout << "TOKENS FOUND:\n";
+    cout << "--------------------\n";
+
+    string token = "";
+    for (char c : code) {
+        if (c == ' ') {
+            
+            if (!token.empty()) {
+                cout << "Token: '" << token << "' -> IDENTIFIER\n";
+                token = "";
+            }
+            continue;
+        }
+
+        
+        if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z')) {
+            token += c;
+        }
+        else {
+            
+            if (!token.empty()) {
+                cout << "Token: '" << token << "' -> IDENTIFIER\n";
+                token = "";
+            }
+
+          
+            if (c == '+' || c == '-' || c == '*' || c == '/' || c == '=') {
+                cout << "Token: '" << c << "' -> OPERATOR\n";
+            }
+            else if (c == '!' || c == '?' || c == ',' || c == '.' || c == ';') {
+                cout << "Token: '" << c << "' -> PUNCTUATION\n";
+            }
+            else {
+                cout << "Token: '" << c << "' -> UNKNOWN\n";
+            }
+        }
+    }
+
+   
+    if (!token.empty()) {
+        cout << "Token: '" << token << "' -> IDENTIFIER\n";
+    }
+
+    return 0;
+}
